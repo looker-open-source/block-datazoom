@@ -673,6 +673,8 @@ view: sinclair_debug {
     timeframes: [
       raw,
       time,
+      minute,
+      hour,
       date,
       week,
       month,
@@ -721,4 +723,126 @@ view: sinclair_debug {
     type: count
     drill_fields: [player_name, browser_name, os_name, advertiser_name, rendition_name]
   }
+
+  measure: unique_devices{
+    sql: ${device_id} ;;
+    type: count_distinct
+    description: "Unique device IDs"
+  }
+
+  measure: unique_users{
+    sql: ${user_id} ;;
+    type: count_distinct
+    description: "Unique user IDs"
+  }
+
+  measure: median_ttff_startup_duration_total {
+    description: "The median time it takes to start playback from the play request"
+    label: "Median TTFF"
+    sql: ${startup_duration_total_ms} ;;
+    type: percentile
+    percentile: 50
+    filters: [
+      event_type: "playback_start",
+      media_type: "content"]
+  }
+
+  measure: heartbeats {
+    type: count
+    filters: [
+      event_type: "heartbeat"]
+  }
+  measure: minutes_from_heartbeat{
+    description: "Mintures viewed calculated from the number of heartbeats"
+    label: "Minutes viewed"
+    type: number
+    sql: (${heartbeats}) ;;
+  }
+
+  measure: unique_sessions{
+    sql: ${app_session_id} ;;
+    type: count_distinct
+    description: "Unique session IDs"
+  }
+
+  measure: minutes_per_session{
+    description: "Average number of minutes viewed per session"
+    label: "Average minutes per session"
+    type: number
+    sql: (${heartbeats}/${unique_sessions}) ;;
+    value_format: "#.00;(#.00)"
+  }
+
+  measure: minutes_per_user{
+    description: "Average number of minutes viewed per user id"
+    label: "Average minutes per user"
+    type: number
+    sql: (${heartbeats}/${unique_users}) ;;
+    value_format: "#.00;(#.00)"
+  }
+
+  measure: minutes_per_device{
+    description: "Average number of minutes viewed per device id"
+    label: "Average minutes per device"
+    type: number
+    sql: (${heartbeats}/${unique_devices}) ;;
+    value_format: "#.00;(#.00)"
+  }
+
+  measure: content_milestones {
+    type: count
+    filters: [
+      event_type: "milestone",
+      media_type: "content"]
+  }
+
+  measure: Ad_Impressions {
+    description: "The number of ad impressions served to users"
+    type: count
+    filters: {
+      field: event_type
+      value: "ad_impression"
+    }
+  }
+
+  measure: Content_Views{
+    sql: ${content_session_id} ;;
+    type: count_distinct
+    drill_fields: [content_session_id, title]
+  }
+
+  measure: Views_with_error{
+    type: count_distinct
+    sql: ${content_session_id} ;;
+    filters: [
+      event_type: "error",
+      media_type: "content"]
+  }
+
+  measure: Video_Error_Rate{
+    type: number
+    value_format_name: percent_2
+    sql: (${Views_with_error}/NULLIF(${Content_Views}, 0)) ;;
+  }
+
+  measure: ad_breaks{
+    type: count_distinct
+    sql: ${ad_break_id} ;;
+  }
+
+  measure: ad_breaks_with_error{
+    type: count_distinct
+    sql: ${ad_break_id} ;;
+    filters: [
+      event_type: "error",
+      media_type: "ad"]
+  }
+
+  measure: Ad_Error_Rate{
+    type: number
+    value_format_name: percent_2
+    sql: (${ad_breaks_with_error}/NULLIF(${ad_breaks}, 0)) ;;
+  }
+
+
 }
