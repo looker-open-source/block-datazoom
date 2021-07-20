@@ -12,7 +12,18 @@ persist_with: datazoomv3_default_datagroup
 
 explore: sinclair_debug {}
 
-# explore: dz_staging {}
+explore: viewing_users {
 
-# explore: jwgold {}
+  join: sinclair_debug {
 
+    type: left_outer
+
+    sql_on: ${viewing_users.user_id} = ${sinclair_debug.device_id} ;;
+
+    relationship: many_to_one
+
+  }
+
+}
+
+explore: final_flux{}

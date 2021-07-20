@@ -724,7 +724,7 @@ view: sinclair_debug {
     drill_fields: [player_name, browser_name, os_name, advertiser_name, rendition_name]
   }
 
-  measure: unique_devices{
+  measure: Unique_Devices{
     sql: ${device_id} ;;
     type: count_distinct
     description: "Unique device IDs"
@@ -736,7 +736,7 @@ view: sinclair_debug {
     description: "Unique user IDs"
   }
 
-  measure: median_ttff_startup_duration_total {
+  measure: median_TTFF_startup_duration_total {
     description: "The median time it takes to start playback from the play request"
     label: "Median TTFF"
     sql: ${startup_duration_total_ms} ;;
@@ -785,7 +785,7 @@ view: sinclair_debug {
     description: "Average number of minutes viewed per device id"
     label: "Average minutes per device"
     type: number
-    sql: (${heartbeats}/${unique_devices}) ;;
+    sql: (${heartbeats}/${Unique_Devices}) ;;
     value_format: "#.00;(#.00)"
   }
 
@@ -843,6 +843,8 @@ view: sinclair_debug {
     value_format_name: percent_2
     sql: (${ad_breaks_with_error}/NULLIF(${ad_breaks}, 0)) ;;
   }
+
+
 
 
 }
