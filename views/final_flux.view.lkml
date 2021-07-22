@@ -5,7 +5,7 @@ view: final_flux {
     persist_for: "1 hour"
     sql:
       SELECT S.event_id, S.content_session_id, timestamp, event_type, buffer_duration_content_ms, playback_duration_content_ms, stall_duration_content_ms,
-      media_type
+      media_type, app_session_id, site_domain
       from `jwplayerproject.jwplayerdataset.sinclair_debug` T
       join (SELECT
           content_session_id,
@@ -47,9 +47,19 @@ view: final_flux {
     sql: ${TABLE}.media_type ;;
   }
 
+  dimension: app_session_id {
+    sql: ${TABLE}.app_session_id ;;
+  }
+
   measure: Content_Views{
     sql: ${content_session_id} ;;
     type: count_distinct
+  }
+
+  measure: unique_sessions{
+    sql: ${app_session_id} ;;
+    type: count_distinct
+    description: "Unique session IDs"
   }
 
   dimension: buffer_duration_content_ms {
@@ -62,6 +72,11 @@ view: final_flux {
 
   dimension: stall_duration_content_ms {
     sql: ${TABLE}.stall_duration_content_ms ;;
+  }
+
+  dimension: site_domain {
+    type: string
+    sql: ${TABLE}.site_domain ;;
   }
 
   measure: Views_with_error{
@@ -110,5 +125,20 @@ view: final_flux {
     sql: (${Total_content_stall_minutes}/NULLIF((${Total_content_playback_minutes}+${Total_content_stall_minutes}),0)) ;;
   }
 
-  ##end final flux dimensions and measures
+  measure: average_minutes_per_session{
+    description: "Average number of minutes viewed per session"
+    label: "Average minutes per session"
+    type: number
+    sql: (${Total_content_playback_minutes}/${unique_sessions}) ;;
+    value_format: "#.00;(#.00)"
+  }
+
+  measure: median_minutes_per_view{
+    description: "The median time time spent watching content in each stream"
+    label: "Median minutes per view"
+    sql: (${playback_duration_content_ms}/60000) ;;
+    type: percentile
+    percentile: 50
+    value_format: "#.00;(#.00)"
+  }
 }

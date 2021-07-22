@@ -323,6 +323,16 @@ view: sinclair_debug {
     sql: ${TABLE}.longitude ;;
   }
 
+  dimension: latitude_rounded {
+    type: number
+    sql: ROUND(${latitude},2) ;;
+  }
+
+  dimension: longitude_rounded {
+    type: number
+    sql: ROUND(${longitude},2) ;;
+  }
+
   dimension: loop {
     type: yesno
     sql: ${TABLE}.loop ;;
@@ -842,6 +852,12 @@ view: sinclair_debug {
     type: number
     value_format_name: percent_2
     sql: (${ad_breaks_with_error}/NULLIF(${ad_breaks}, 0)) ;;
+  }
+
+  dimension: geolocation {
+    type: location
+    sql_latitude:${latitude_rounded} ;;
+    sql_longitude:${longitude_rounded} ;;
   }
 
 
