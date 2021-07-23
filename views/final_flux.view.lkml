@@ -5,7 +5,7 @@ view: final_flux {
     persist_for: "1 hour"
     sql:
       SELECT S.event_id, S.content_session_id, timestamp, event_type, buffer_duration_content_ms, playback_duration_content_ms, stall_duration_content_ms,
-      media_type, app_session_id, site_domain
+      media_type, app_session_id, site_domain, error_msg, title
       from `jwplayerproject.jwplayerdataset.sinclair_debug` T
       join (SELECT
           content_session_id,
@@ -33,6 +33,16 @@ view: final_flux {
       year
     ]
     sql: ${TABLE}.timestamp ;;
+  }
+
+  dimension: title {
+    type: string
+    sql: ${TABLE}.title ;;
+  }
+
+  dimension: error_msg {
+    type: string
+    sql: ${TABLE}.error_msg ;;
   }
 
   dimension: content_session_id {
@@ -85,6 +95,7 @@ view: final_flux {
     filters: [
       event_type: "error",
       media_type: "content"]
+    drill_fields: [site_domain, title, Content_Views]
   }
 
   measure: Fatal_video_Error_Rate{

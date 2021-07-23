@@ -861,6 +861,44 @@ view: sinclair_debug {
   }
 
 
+  measure: Ad_Completes {
+    type: count_distinct
+    sql: ${ad_session_id} ;;
+    filters: {
+      field: event_type
+      value: "playback_complete"
+    }
+  }
 
+  measure: Ad_Clicks {
+    type: count_distinct
+    sql: ${ad_session_id} ;;
+    filters: {
+      field: event_type
+      value: "ad_click"
+    }
+  }
+
+  measure: Ad_Starts {
+    type: count_distinct
+    sql: ${ad_session_id} ;;
+    filters: [
+      event_type: "playback_start",
+      media_type: "ad"]
+  }
+
+  measure: Ad_Completion_Rate {
+    description: "The percentage of ads that are watched in their entirity."
+    type: number
+    value_format_name: percent_2
+    sql: ((${Ad_Completes}/NULLIF(${Ad_Starts}, 0))) ;;
+  }
+
+  measure: Ad_Clickthrough_Rate {
+    description: "The percentage of ads that are watched in their entirity."
+    type: number
+    value_format_name: percent_2
+    sql: ((${Ad_Clicks}/NULLIF(${Ad_Starts}, 0))) ;;
+  }
 
 }
