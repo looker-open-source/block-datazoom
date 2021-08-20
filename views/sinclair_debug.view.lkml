@@ -756,12 +756,18 @@ view: sinclair_debug {
       event_type: "playback_start",
       media_type: "content"]
   }
-
   measure: heartbeats {
-    type: count
+    label: "hearbeatstest"
+    type: count_distinct
+    sql: ${event_id} ;;
     filters: [
       event_type: "heartbeat"]
   }
+  # measure: heartbeats {
+  #   type: count
+  #   filters: [
+  #     event_type: "heartbeat"]
+  # }
   measure: minutes_from_heartbeat{
     description: "Mintures viewed calculated from the number of heartbeats"
     label: "Minutes viewed"
@@ -900,5 +906,61 @@ view: sinclair_debug {
     value_format_name: percent_2
     sql: ((${Ad_Clicks}/NULLIF(${Ad_Starts}, 0))) ;;
   }
+
+  measure: Distinct_Ad_Break_Starts {
+    description: "The number of views that have an ad break start"
+    type: count_distinct
+    sql: ${ad_break_id} ;;
+    filters: {
+      field: event_type
+      value: "ad_break_start"
+    }
+  }
+
+  measure: Distinct_Ad_Break_Ends {
+    description: "The number of views that have an ad break end"
+    type: count_distinct
+    sql: ${ad_break_id} ;;
+    filters: {
+      field: event_type
+      value: "ad_break_end"
+    }
+  }
+
+  measure: Ad_Tollerance {
+    label: "Ad Tolerance"
+    description: "The percentage of adbreaks that end"
+    type: number
+    value_format_name: percent_2
+    sql: (${Distinct_Ad_Break_Ends}/NULLIF(${Distinct_Ad_Break_Starts}, 0)) ;;
+  }
+
+  measure: distinct_ad_break_impressions {
+    description: "Unique ad break ids for ad impression events"
+    type: count_distinct
+    sql: ${ad_break_id} ;;
+    filters: {
+      field: event_type
+      value: "ad_impression"
+    }
+  }
+
+  measure: distinct_ad_break_ad_requests {
+    description: "Unique ad break ids for ad impression events"
+    type: count_distinct
+    sql: ${ad_break_id} ;;
+    filters: [
+      event_type: "media_request",
+      media_type: "ad"]
+  }
+
+  measure: ad_fill_rate{
+    description: "The percentage of ad requests that have a resulting ad impression"
+    type: number
+    value_format_name: percent_2
+    sql: (${distinct_ad_break_impressions}/NULLIF(${distinct_ad_break_ad_requests}, 0)) ;;
+
+  }
+
 
 }
