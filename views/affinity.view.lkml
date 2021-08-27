@@ -30,7 +30,7 @@ view: affinity {
                 , COUNT(*) AS joint_session_plays
               FROM ${user_watch_content.SQL_TABLE_NAME} op1
               LEFT JOIN ${user_watch_content.SQL_TABLE_NAME} op2
-                ON op1.session_id = op2.session_id
+                ON op1.app_session_id = op2.app_session_id
                 AND op1.content <> op2.content
               GROUP BY ocontent_a, ocontent_b
           ) AS jof
@@ -132,9 +132,9 @@ view: user_watch_content {
 
     sql:    SELECT
 
-            device_id as user_id, contentGroupTitle as content, session_id
+            device_id as user_id, title as content, app_session_id
 
-          FROM akamai_amp_web_player_table
+          FROM sinclair_debug
 
           GROUP BY 1, 2, 3;;
 
@@ -158,9 +158,9 @@ view: user_watch_content {
       sql: ${TABLE}.content ;;
     }
 
-    dimension: session_id {
+    dimension: app_session_id {
       type: number
-      sql: ${TABLE}.session_id ;;
+      sql: ${TABLE}.app_session_id ;;
     }
   }
 
@@ -171,11 +171,11 @@ view: user_watch_content {
       persist_for: "24 hours"
       sql:    SELECT
 
-            contentGroupTitle as content
-            , SUM(CASE WHEN event_type = "Playback_Start" and videoType="Content" THEN 1 END) AS plays
-            , SUM(CASE WHEN event_type = 'Heartbeat' THEN 1 END) AS heartbeats
+            title as content
+            , SUM(CASE WHEN event_type = "playback_start" and media_type="content" THEN 1 END) AS plays
+            , SUM(CASE WHEN event_type = 'heartbeat' THEN 1 END) AS heartbeats
 
-            FROM akamai_amp_web_player_table
+            FROM sinclair_debug
 
             GROUP BY 1;;
     }
