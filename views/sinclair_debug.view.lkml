@@ -962,5 +962,36 @@ view: sinclair_debug {
 
   }
 
+  dimension: playhead_position_bucket {
+    description: "Position of the playhead bucketed into 5 minute intervals"
+    type: tier
+    tiers: [
+      0,
+      300,
+      600,
+      900,
+      1200,
+      1500,
+      1800,
+      2100
+    ]
+    sql: ${playhead_position_sec} ;;
+  }
+
+  dimension: 30_day_window{
+    case: {
+      when: {
+        sql: DATE_DIFF(CURRENT_DATE(),${timestamp_date},DAY) <= 30;;
+        label: "Now"
+      }
+      when: {
+        sql: DATE_DIFF(CURRENT_DATE(),${timestamp_date},DAY) <= 60;;
+        label: "Previous"
+      }
+      else:  "Historical"
+
+    }
+  }
+
 
 }

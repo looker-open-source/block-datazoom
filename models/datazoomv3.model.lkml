@@ -27,3 +27,15 @@ explore: viewing_users {
 }
 
 explore: final_flux{}
+
+
+explore: affinity {
+  label: "Affinity Analysis"
+
+  always_filter: {
+    filters: {
+      field: affinity.content_b
+      value: "-NULL"
+    }
+  }
+}
