@@ -22,5 +22,5 @@ constant: DATAZOOM_RAW_TABLE_NAME {
 
 # Don't modify this value unless instructed to do so by your DataZoom or Looker Rep
 constant: LOOKER_MODEL_NAME {
-  value: "datazoom_v3"
+  value: "datazoomv3"
 }
