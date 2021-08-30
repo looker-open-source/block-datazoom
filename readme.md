@@ -33,9 +33,9 @@ Click on any pie chart or map to filter the entire dashboard by that user cohort
 3. Try various filters to see which countries and device types could use additional marketing, and what time is preferable to drive growth, or existing users back to the platform.
 
 
-## Ads Dashboard
+## Ad performance Dashboard
 #### Used by ad ops and sales teams
-##### Requires `views_with_adbreakstart` derived table
+##### Requires base Datazoom raw player table only
 
 This dashboard displays which ads are being consumed during which content and where. Can be used to determine if ads are successfully viewed or if they are driving users away.
 
@@ -44,12 +44,25 @@ This dashboard displays which ads are being consumed during which content and wh
 * Ad Tolerance: This is the rate at which users start an ad break and stay until the end. These users are not leaving during the ad break. Some users are more tolerant toward ads, and some content can sustain a higher ad saturation. Use filters to find where that point is.
 * Standard Ad metrics: Impressions, completion, click through and fill rate. Mostly used to measure the success of an ad campaign.
 
-
 **Filtering**
 
 Filter by clicking on a content title, country, Ad ID, or Ad system from the charts.
 
 Ad tolerance metrics are mostly related to content (filter), where as click and completion metrics are related to the ad itself.
+
+## Ad ops Dashboard
+#### Used by ad ops team
+##### Requires base Datazoom raw player table only
+
+This dashboard focuses on ad errors and the financial implications. It can be used by ad ops to debug, and pinpoint the offending content and related ad error.
+
+**Metrics**
+
+* Error rate: this is the percentage of ad breaks that produce an ad error.
+
+**Filtering**
+
+Filter the metrics by clicking on the ad error code or by selecting content from the list.
 
 
 ## Content Performance Dashboard
@@ -83,7 +96,7 @@ We can see what content users are inclined to watch by clicking on a "Content A"
 
 ## QoE Dashboard
 #### Used by Video Engineering and Incident Management
-##### Requires `views_with_play_request` derived table
+##### Requires `final_flux` derived table
 
 This dashboard displays various playback quality indicators. It is used to help the engineering teams identify and debug video issues.
 
@@ -112,7 +125,7 @@ TTFF - Time to first frame. How long it takes to start video playback. Ideally t
 
 ## Data Supervision Dashboard
 #### Used by Data Engineers
-##### Requires `views_with_adbreak_end` and `views_with_playback_start` and `views_with_play_request` and `views_with_adbreakstart` derived tables
+##### Requires base Datazoom raw player table only
 
 Use this dashboard to identify missing events and data inconsistencies.
 

@@ -16,7 +16,7 @@ view: viewing_users {
 
                     , cast(TIMESTAMP_TRUNC(timestamp,day) as date) as activity_date
 
-                  FROM sinclair_debug
+                  FROM ${datazoom_raw.SQL_TABLE_NAME}
 
                   GROUP BY 1, 2
 

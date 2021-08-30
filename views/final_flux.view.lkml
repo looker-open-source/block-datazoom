@@ -6,11 +6,11 @@ view: final_flux {
     sql:
       SELECT S.event_id, S.content_session_id, timestamp, event_type, buffer_duration_content_ms, playback_duration_content_ms, stall_duration_content_ms,
       media_type, app_session_id, site_domain, error_msg, title
-      from `jwplayerproject.jwplayerdataset.sinclair_debug` T
+      from ${datazoom_raw.SQL_TABLE_NAME} T
       join (SELECT
           content_session_id,
           max(event_id) as event_id
-          from `jwplayerproject.jwplayerdataset.sinclair_debug`
+          from ${datazoom_raw.SQL_TABLE_NAME}
       GROUP BY content_session_id) S
       on T.event_id = S.event_id
       ;;

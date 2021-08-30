@@ -1,4 +1,4 @@
-view: sinclair_debug {
+view: datazoom_raw {
 
   sql_table_name: `@{BIGQUERY_PROJECT_NAME}.@{BIGQUERY_DATASET_NAME}.@{DATAZOOM_RAW_TABLE_NAME}`
 
