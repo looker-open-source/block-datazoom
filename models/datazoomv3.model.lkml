@@ -4,7 +4,7 @@ connection: "@{CONNECTION_NAME}"
 include: "/views/**/*.view"
 
 # include all the dashboards
-# include: "/dashboards/**/*.dashboard"
+include: "/dashboards/**/*.dashboard"
 
 datagroup: datazoomv3_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
