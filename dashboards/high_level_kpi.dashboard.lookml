@@ -5,7 +5,7 @@
   elements:
   - title: Daily viewing users
     name: Daily viewing users
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.Unique_Devices, datazoom_raw.timestamp_date]
@@ -63,7 +63,7 @@
     height: 6
   - title: Monthly viewing users
     name: Monthly viewing users
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: single_value
     fields: [datazoom_raw.Unique_Devices, datazoom_raw.30_day_window]
@@ -130,7 +130,7 @@
     height: 6
   - title: Monthly content minutes
     name: Monthly content minutes
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: single_value
     fields: [datazoom_raw.minutes_from_heartbeat, datazoom_raw.30_day_window]
@@ -197,7 +197,7 @@
     height: 6
   - title: Monthly ad impressions
     name: Monthly ad impressions
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: single_value
     fields: [datazoom_raw.Ad_Impressions, datazoom_raw.30_day_window]
@@ -264,7 +264,7 @@
     height: 6
   - title: Daily ad impressions
     name: Daily ad impressions
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.Ad_Impressions, datazoom_raw.timestamp_date]
@@ -331,7 +331,7 @@
     height: 6
   - title: Daily content minutes consumed
     name: Daily content minutes consumed
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.minutes_from_heartbeat]
@@ -398,7 +398,7 @@
     height: 6
   - title: Viewing user stickiness
     name: Viewing user stickiness
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_scatter
     fields: [viewing_users.user_count_active_30_days, viewing_users.user_count_active_this_day,
@@ -477,7 +477,7 @@
     height: 6
   - title: Weekly viewing users
     name: Weekly viewing users
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_line
     fields: [viewing_users.date_date, viewing_users.user_count_active_7_days]

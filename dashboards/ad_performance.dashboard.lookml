@@ -6,7 +6,7 @@
   elements:
   - title: Ad completion rate
     name: Ad completion rate
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.Ad_Completion_Rate]
@@ -51,7 +51,7 @@
     height: 6
   - title: Ad clickthrough rate
     name: Ad clickthrough rate
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.Ad_Clickthrough_Rate]
@@ -96,7 +96,7 @@
     height: 6
   - title: Daily ad impressions
     name: Daily ad impressions
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.Ad_Impressions]
@@ -185,7 +185,7 @@
     height: 6
   - title: Ad tolerance by title
     name: Ad tolerance by title
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.Ad_Impressions, datazoom_raw.Ad_Tollerance, datazoom_raw.title]
@@ -273,7 +273,7 @@
     height: 6
   - title: Ad tolerance by country
     name: Ad tolerance by country
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_map
     fields: [datazoom_raw.Ad_Tollerance, datazoom_raw.country]
@@ -385,7 +385,7 @@
     height: 12
   - title: Ad impressions by ad ID
     name: Ad impressions by ad ID
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.Ad_Impressions, datazoom_raw.ad_id]
@@ -473,7 +473,7 @@
     height: 6
   - title: Ad impressions by ad system
     name: Ad impressions by ad system
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.Ad_Impressions, datazoom_raw.ad_system]
@@ -561,7 +561,7 @@
     height: 6
   - title: Ad completion funnel
     name: Ad completion funnel
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_funnel
     fields: [datazoom_raw.milestone_percent, datazoom_raw.count]
@@ -686,7 +686,7 @@
     height: 9
   - title: Ad performance required events
     name: Ad performance required events
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.event_type, datazoom_raw.count]

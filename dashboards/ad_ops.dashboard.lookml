@@ -6,7 +6,7 @@
   elements:
   - title: Ad error rate by title
     name: Ad error rate by title
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.Ad_Impressions, datazoom_raw.Ad_Error_Rate, datazoom_raw.title]
@@ -94,7 +94,7 @@
     height: 6
   - title: Daily ad error rate
     name: Daily ad error rate
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.Ad_Error_Rate, datazoom_raw.timestamp_date]
@@ -183,7 +183,7 @@
     height: 6
   - title: Daily ad fill rate
     name: Daily ad fill rate
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.ad_fill_rate]
@@ -272,7 +272,7 @@
     height: 6
   - title: Ad fill rate by title
     name: Ad fill rate by title
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.ad_fill_rate, datazoom_raw.title, datazoom_raw.distinct_ad_break_ad_requests]
@@ -361,7 +361,7 @@
     height: 12
   - title: Ad error code and message
     name: Ad error code and message
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.error_code, datazoom_raw.ad_breaks_with_error, datazoom_raw.error_msg]
@@ -450,7 +450,7 @@
     height: 6
   - title: Daily ad errors by code
     name: Daily ad errors by code
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.error_code, datazoom_raw.ad_breaks_with_error, datazoom_raw.timestamp_date]
@@ -542,7 +542,7 @@
     height: 6
   - title: Daily ad error rate by OS
     name: Daily ad error rate by OS
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.os_name, datazoom_raw.Ad_Error_Rate]
@@ -648,7 +648,7 @@
     height: 6
   - title: Ad ops required events
     name: Ad ops required events
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.event_type, datazoom_raw.count]

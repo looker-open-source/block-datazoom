@@ -5,7 +5,7 @@
   elements:
   - title: Minutes per title
     name: Minutes per title
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.title, datazoom_raw.minutes_from_heartbeat]
@@ -81,7 +81,7 @@
     height: 6
   - title: Content popularity
     name: Content popularity
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.title, datazoom_raw.Unique_Devices, datazoom_raw.Ad_Impressions]
@@ -115,7 +115,7 @@
     height: 12
   - title: Average minutes per device
     name: Average minutes per device
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_map
     fields: [datazoom_raw.minutes_per_device, datazoom_raw.country]
@@ -185,7 +185,7 @@
     height: 11
   - title: Views per hour
     name: Views per hour
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.Content_Views, datazoom_raw.timestamp_hour]
@@ -256,7 +256,7 @@
     height: 6
   - title: Average viewing duration
     name: Average viewing duration
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.minutes_per_session]
@@ -328,7 +328,7 @@
     height: 6
   - title: Content drop off 5 minute blocks
     name: Content drop off 5 minute blocks
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_column
     fields: [datazoom_raw.playhead_position_bucket, datazoom_raw.count]

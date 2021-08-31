@@ -6,7 +6,7 @@
   elements:
   - title: Engagement category distribution
     name: Engagement category distribution
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_pie
     fields: [viewing_users.weekly_engagement_category, datazoom_raw.Unique_Devices]
@@ -29,7 +29,7 @@
     height: 6
   - title: Engagement category growth
     name: Engagement category growth
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_area
     fields: [viewing_users.weekly_engagement_category, datazoom_raw.Unique_Devices,
@@ -82,7 +82,7 @@
     height: 6
   - title: Audience OS distribution
     name: Audience OS distribution
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_pie
     fields: [datazoom_raw.Unique_Devices, datazoom_raw.os_name]
@@ -133,7 +133,7 @@
     height: 6
   - title: Stickiness
     name: Stickiness
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: single_value
     fields: [viewing_users.user_count_active_this_day, viewing_users.user_count_active_30_days,
@@ -210,7 +210,7 @@
     height: 6
   - title: Engagement category distribution over time
     name: Engagement category distribution over time
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_area
     fields: [viewing_users.weekly_engagement_category, datazoom_raw.Unique_Devices,
@@ -263,7 +263,7 @@
     height: 6
   - title: Average session duration in minutes
     name: Average session duration in minutes
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: single_value
     fields: [datazoom_raw.minutes_per_session, datazoom_raw.timestamp_date]
@@ -340,7 +340,7 @@
     height: 6
   - title: Playbck concurrency Users
     name: Playbck concurrency Users
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_line
     fields: [datazoom_raw.Unique_Devices, datazoom_raw.timestamp_hour]
@@ -417,7 +417,7 @@
     height: 6
   - title: Location density by country
     name: Location density by country
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_map
     fields: [datazoom_raw.Unique_Devices, datazoom_raw.country]
@@ -517,7 +517,7 @@
     height: 10
   - title: Population density granular
     name: Population density granular
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_map
     fields: [datazoom_raw.Unique_Devices, datazoom_raw.geolocation]
@@ -619,7 +619,7 @@
     height: 7
   - title: Weekly users by referrer
     name: Weekly users by referrer
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_grid
     fields: [datazoom_raw.Unique_Devices, datazoom_raw.referrer_url]

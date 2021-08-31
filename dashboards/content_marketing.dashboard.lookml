@@ -6,7 +6,7 @@
   elements:
   - title: Content Recomendation
     name: Content Recomendation
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: affinity
     type: looker_scatter
     fields: [affinity.content_a, affinity.avg_user_affinity, affinity.content_b, affinity.joint_user_plays]
@@ -72,7 +72,7 @@
     height: 8
   - title: Content selector ordered by playcount
     name: Content selector ordered by playcount
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: affinity
     type: looker_grid
     fields: [affinity.content_a, affinity.content_a_plays]
@@ -148,7 +148,7 @@
     height: 13
   - title: Hidden Gems
     name: Hidden Gems
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: affinity
     type: looker_grid
     fields: [affinity.content_a, affinity.content_b, affinity.joint_user_plays, affinity.content_b_plays,

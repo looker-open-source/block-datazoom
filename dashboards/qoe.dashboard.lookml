@@ -5,7 +5,7 @@
   elements:
   - title: Daily video error rate
     name: Daily video error rate
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.Video_Error_Rate]
@@ -93,7 +93,7 @@
     height: 6
   - title: Video error rate by content
     name: Video error rate by content
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.Video_Error_Rate, datazoom_raw.title, datazoom_raw.Content_Views]
@@ -183,7 +183,7 @@
     height: 6
   - title: Hourly fatal video error rate
     name: Hourly fatal video error rate
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: final_flux
     type: looker_line
     fields: [final_flux.timestamp_hour, final_flux.Fatal_video_Error_Rate]
@@ -225,7 +225,7 @@
     height: 6
   - title: Hourly buffer vs stall ratio
     name: Hourly buffer vs stall ratio
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: final_flux
     type: looker_line
     fields: [final_flux.Buffer_ratio, final_flux.timestamp_hour, final_flux.timestamp_date,
@@ -267,7 +267,7 @@
     height: 6
   - title: 24h stall ratio by content
     name: 24h stall ratio by content
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: final_flux
     type: looker_grid
     fields: [final_flux.Stall_ratio, final_flux.title]
@@ -331,7 +331,7 @@
     height: 6
   - title: 24h time to first frame by content
     name: 24h time to first frame by content
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.title]
@@ -397,7 +397,7 @@
     height: 6
   - title: Hourly Time to first frame over 5 seconds
     name: Hourly Time to first frame over 5 seconds
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.site_domain,
@@ -466,7 +466,7 @@
     height: 6
   - title: Time to first frame by location
     name: Time to first frame by location
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_map
     fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.geolocation]
@@ -559,7 +559,7 @@
     height: 12
   - title: 24 hour Fatal video errror rate by content
     name: 24 hour Fatal video errror rate by content
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: final_flux
     type: looker_grid
     fields: [final_flux.Fatal_video_Error_Rate, final_flux.title]
@@ -615,7 +615,7 @@
     height: 6
   - title: Fatal video error messages
     name: Fatal video error messages
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: final_flux
     type: looker_line
     fields: [final_flux.timestamp_hour, final_flux.error_msg, final_flux.Views_with_error]
@@ -699,7 +699,7 @@
     height: 12
   - title: QOE required events
     name: QOE required events
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.event_type, datazoom_raw.count]

@@ -5,7 +5,7 @@
   elements:
   - title: Ads required events
     name: Ads required events
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.event_type, datazoom_raw.count]
@@ -52,7 +52,7 @@
     height:
   - title: QOE required event
     name: QOE required event
-    model: datazoomv3
+    model: "@{LOOKER_MODEL_NAME}"
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.event_type, datazoom_raw.count]
