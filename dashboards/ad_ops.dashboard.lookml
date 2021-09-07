@@ -634,7 +634,7 @@
     title_text: README
     subtitle_text: Used by ad ops team
     body_text: |-
-      This dashboard focuses on ad errors and the financial implications. It can be used by ad ops to debug, and pinpoint the offending content and related ad error.
+      This dashboard focuses on ad errors and the financial implications. It can be used by ad ops to debug and pinpoint the offending content and related ad error.
 
 
       **Metrics**

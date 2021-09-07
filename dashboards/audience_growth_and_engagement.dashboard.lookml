@@ -338,8 +338,8 @@
     col: 16
     width: 8
     height: 6
-  - title: Playbck concurrency Users
-    name: Playbck concurrency Users
+  - title: Playback concurrency Users
+    name: Playback concurrency Users
     model: "@{LOOKER_MODEL_NAME}"
     explore: viewing_users
     type: looker_line

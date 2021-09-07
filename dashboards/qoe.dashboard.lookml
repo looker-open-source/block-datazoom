@@ -690,7 +690,7 @@
 
       **Definitions**
 
-      EBVS - Exit before video start. Users may not be able to playback video and also don't generate an error. EBVS will increase in under these circumstances. <br>
+      EBVS - Exit before video start. Users may not be able to playback video and also don't generate an error. EBVS will increase under these circumstances. <br>
       Buffer Recovery Rate - The percentage of buffer starts that have a resulting buffer end. Those buffers that do not have an end, either got stuck or the user did not tolerate the buffer duration.<br>
       TTFF - Time to first frame. How long it takes to start video playback. Ideally the video should be quick to start, but the delay in starting can be tolerated more depending on the user's circumstances.
     row: 0
