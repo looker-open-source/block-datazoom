@@ -78,6 +78,7 @@ view: final_flux {
 
   dimension: playback_duration_content_ms {
     sql: ${TABLE}.playback_duration_content_ms ;;
+    type: number
   }
 
   dimension: stall_duration_content_ms {
@@ -98,12 +99,46 @@ view: final_flux {
     drill_fields: [site_domain, title, Content_Views]
   }
 
+  measure: start_views_with_error{
+    type: count_distinct
+    sql: ${content_session_id} ;;
+    filters: [
+      event_type: "error",
+      media_type: "content",
+      playback_duration_content_ms: "=0"]
+    drill_fields: [site_domain, title, Content_Views]
+  }
+
+  measure: mid_views_with_error{
+    type: count_distinct
+    sql: ${content_session_id} ;;
+    filters: [
+      event_type: "error",
+      media_type: "content",
+      playback_duration_content_ms: ">0"]
+    drill_fields: [site_domain, title, Content_Views]
+  }
+
   measure: Fatal_video_Error_Rate{
     description: "To be used only with final_flux view. The percent of views that end in an error"
     type: number
     value_format_name: percent_2
     sql: (${Views_with_error}/NULLIF(${Content_Views}, 0)) ;;
     }
+
+  measure: Fatal_start_video_Error_Rate{
+    description: "To be used only with final_flux view. The percent of views that end in an error"
+    type: number
+    value_format_name: percent_2
+    sql: (${start_views_with_error}/NULLIF(${Content_Views}, 0)) ;;
+  }
+
+  measure: Fatal_mid_video_Error_Rate{
+    description: "To be used only with final_flux view. The percent of views that end in an error"
+    type: number
+    value_format_name: percent_2
+    sql: (${mid_views_with_error}/NULLIF(${Content_Views}, 0)) ;;
+  }
 
   measure: Total_buffering_minutes{
     type: sum
