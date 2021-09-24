@@ -5,7 +5,7 @@
   elements:
   - title: Daily video error rate
     name: Daily video error rate
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.timestamp_date, datazoom_raw.Video_Error_Rate]
@@ -87,13 +87,17 @@
     labelColor: "#FFF"
     hidden_fields: []
     y_axes: []
-    row: 24
-    col: 0
+    listen:
+      ISP: datazoom_raw.isp
+      Asn: datazoom_raw.asn
+      Country: datazoom_raw.country
+    row: 38
+    col: 16
     width: 8
     height: 6
   - title: Video error rate by content
     name: Video error rate by content
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.Video_Error_Rate, datazoom_raw.title, datazoom_raw.Content_Views]
@@ -176,14 +180,17 @@
     labelColor: "#FFF"
     hidden_fields: []
     y_axes: []
-    listen: {}
+    listen:
+      ISP: datazoom_raw.isp
+      Asn: datazoom_raw.asn
+      Country: datazoom_raw.country
     row: 18
     col: 0
     width: 8
     height: 6
   - title: Hourly fatal video error rate
     name: Hourly fatal video error rate
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: final_flux
     type: looker_line
     fields: [final_flux.timestamp_hour, final_flux.Fatal_video_Error_Rate]
@@ -219,13 +226,14 @@
     interpolation: linear
     defaults_version: 1
     hidden_fields:
-    row: 0
-    col: 16
+    listen: {}
+    row: 38
+    col: 8
     width: 8
     height: 6
   - title: Hourly buffer vs stall ratio
     name: Hourly buffer vs stall ratio
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: final_flux
     type: looker_line
     fields: [final_flux.Buffer_ratio, final_flux.timestamp_hour, final_flux.timestamp_date,
@@ -261,13 +269,14 @@
     interpolation: linear
     defaults_version: 1
     hidden_fields: [final_flux.timestamp_date]
+    listen: {}
     row: 14
     col: 16
     width: 8
     height: 6
   - title: 24h stall ratio by content
     name: 24h stall ratio by content
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: final_flux
     type: looker_grid
     fields: [final_flux.Stall_ratio, final_flux.title]
@@ -331,7 +340,7 @@
     height: 6
   - title: 24h time to first frame by content
     name: 24h time to first frame by content
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.title]
@@ -390,14 +399,17 @@
     show_comparison_label: true
     hidden_fields: []
     y_axes: []
-    listen: {}
+    listen:
+      ISP: datazoom_raw.isp
+      Asn: datazoom_raw.asn
+      Country: datazoom_raw.country
     row: 6
     col: 8
     width: 8
     height: 6
   - title: Hourly Time to first frame over 5 seconds
     name: Hourly Time to first frame over 5 seconds
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: datazoom_raw
     type: looker_line
     fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.site_domain,
@@ -460,13 +472,17 @@
     rows_font_size: 12
     hidden_fields: []
     y_axes: []
+    listen:
+      ISP: datazoom_raw.isp
+      Asn: datazoom_raw.asn
+      Country: datazoom_raw.country
     row: 20
     col: 16
     width: 8
     height: 6
   - title: Time to first frame by location
     name: Time to first frame by location
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: datazoom_raw
     type: looker_map
     fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.geolocation]
@@ -552,14 +568,17 @@
     rows_font_size: 12
     hidden_fields: []
     y_axes: []
-    listen: {}
+    listen:
+      ISP: datazoom_raw.isp
+      Asn: datazoom_raw.asn
+      Country: datazoom_raw.country
     row: 12
     col: 8
     width: 8
     height: 12
   - title: 24 hour Fatal video errror rate by content
     name: 24 hour Fatal video errror rate by content
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: final_flux
     type: looker_grid
     fields: [final_flux.Fatal_video_Error_Rate, final_flux.title]
@@ -615,7 +634,7 @@
     height: 6
   - title: Fatal video error messages
     name: Fatal video error messages
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: final_flux
     type: looker_line
     fields: [final_flux.timestamp_hour, final_flux.error_msg, final_flux.Views_with_error]
@@ -652,8 +671,9 @@
     interpolation: linear
     defaults_version: 1
     hidden_fields:
-    row: 8
-    col: 16
+    listen: {}
+    row: 44
+    col: 8
     width: 8
     height: 6
   - name: "!! Click on a Fatal video error message to identify the culprit !!"
@@ -699,7 +719,7 @@
     height: 12
   - title: QOE required events
     name: QOE required events
-    model: "@{LOOKER_MODEL_NAME}"
+    model: datazoomv3
     explore: datazoom_raw
     type: looker_grid
     fields: [datazoom_raw.event_type, datazoom_raw.count]
@@ -746,7 +766,326 @@
     defaults_version: 1
     hidden_fields: []
     y_axes: []
-    row:
-    col:
-    width:
-    height:
+    listen:
+      ISP: datazoom_raw.isp
+      Asn: datazoom_raw.asn
+      Country: datazoom_raw.country
+    row: 38
+    col: 0
+    width: 8
+    height: 6
+  - title: Mid stream fatal error rate
+    name: Mid stream fatal error rate
+    model: datazoomv3
+    explore: final_flux
+    type: looker_line
+    fields: [final_flux.timestamp_hour, final_flux.Fatal_mid_video_Error_Rate]
+    fill_fields: [final_flux.timestamp_hour]
+    filters:
+      final_flux.timestamp_date: 24 hours
+    sorts: [final_flux.timestamp_hour desc]
+    limit: 500
+    query_timezone: America/New_York
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    hidden_fields:
+    listen: {}
+    row: 0
+    col: 16
+    width: 8
+    height: 6
+  - title: Mid stream fatal video errors
+    name: Mid stream fatal video errors
+    model: datazoomv3
+    explore: final_flux
+    type: looker_line
+    fields: [final_flux.timestamp_hour, final_flux.error_msg, final_flux.mid_views_with_error]
+    pivots: [final_flux.error_msg]
+    fill_fields: [final_flux.timestamp_hour]
+    filters:
+      final_flux.timestamp_date: 24 hours
+    sorts: [final_flux.timestamp_hour desc, final_flux.error_msg]
+    limit: 500
+    query_timezone: America/New_York
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    hidden_fields:
+    listen: {}
+    row: 8
+    col: 16
+    width: 8
+    height: 6
+  - title: Mid stream fatal errors by ISP
+    name: Mid stream fatal errors by ISP
+    model: datazoomv3
+    explore: final_flux
+    type: looker_grid
+    fields: [final_flux.Fatal_mid_video_Error_Rate, final_flux.isp]
+    filters:
+      final_flux.timestamp_date: 24 hours
+    sorts: [final_flux.Fatal_mid_video_Error_Rate desc]
+    limit: 500
+    query_timezone: America/New_York
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    hidden_fields:
+    series_types: {}
+    row: 26
+    col: 16
+    width: 8
+    height: 6
+  - title: Mid stream fatal video error rate map
+    name: Mid stream fatal video error rate map
+    model: datazoomv3
+    explore: final_flux
+    type: looker_map
+    fields: [final_flux.Fatal_mid_video_Error_Rate, final_flux.country]
+    filters:
+      final_flux.timestamp_date: 24 hours
+    sorts: [final_flux.Fatal_mid_video_Error_Rate desc]
+    limit: 500
+    query_timezone: America/New_York
+    map_plot_mode: points
+    heatmap_gridlines: false
+    heatmap_gridlines_empty: false
+    heatmap_opacity: 0.5
+    show_region_field: true
+    draw_map_labels_above_data: true
+    map_tile_provider: light
+    map_position: fit_data
+    map_scale_indicator: 'off'
+    map_pannable: true
+    map_zoomable: true
+    map_marker_type: circle
+    map_marker_icon_name: default
+    map_marker_radius_mode: proportional_value
+    map_marker_units: meters
+    map_marker_proportional_scale_type: linear
+    map_marker_color_mode: fixed
+    show_view_names: false
+    show_legend: true
+    quantize_map_value_colors: false
+    reverse_map_value_colors: false
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    hidden_fields:
+    series_types: {}
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    row: 24
+    col: 0
+    width: 16
+    height: 14
+  - title: Mid stream fatal errors by OS/Browser
+    name: Mid stream fatal errors by OS/Browser
+    model: datazoomv3
+    explore: final_flux
+    type: looker_grid
+    fields: [final_flux.Fatal_mid_video_Error_Rate, final_flux.browser_name, final_flux.os_name]
+    filters:
+      final_flux.timestamp_date: 24 hours
+    sorts: [final_flux.Fatal_mid_video_Error_Rate desc]
+    limit: 500
+    query_timezone: America/New_York
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    hidden_fields:
+    series_types: {}
+    row: 32
+    col: 16
+    width: 8
+    height: 6
+  filters:
+  - name: ISP
+    title: ISP
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+      options: []
+    model: datazoomv3
+    explore: datazoom_raw
+    listens_to_filters: []
+    field: datazoom_raw.isp
+  - name: Asn
+    title: Asn
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+      options: []
+    model: datazoomv3
+    explore: datazoom_raw
+    listens_to_filters: []
+    field: datazoom_raw.asn
+  - name: Country
+    title: Country
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+      options: []
+    model: datazoomv3
+    explore: datazoom_raw
+    listens_to_filters: []
+    field: datazoom_raw.country
