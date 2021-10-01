@@ -5,7 +5,7 @@ view: final_flux {
     persist_for: "1 hour"
     sql:
       SELECT S.event_id, S.content_session_id, timestamp, event_type, buffer_duration_content_ms, playback_duration_content_ms, stall_duration_content_ms,
-      media_type, app_session_id, site_domain, error_msg, title, page_url, isp, browser_name, country, os_name
+      media_type, app_session_id, site_domain, error_msg, title, page_url, isp, browser_name, country, os_name, device_type
       from ${datazoom_raw.SQL_TABLE_NAME} T
       join (SELECT
           content_session_id,
@@ -37,6 +37,11 @@ view: final_flux {
   dimension: isp {
     type: string
     sql: ${TABLE}.isp ;;
+  }
+
+  dimension: device_type {
+    type: string
+    sql: ${TABLE}.device_type ;;
   }
 
   dimension: browser_name {
