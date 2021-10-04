@@ -17,7 +17,7 @@ constant: BIGQUERY_DATASET_NAME {
 }
 
 constant: DATAZOOM_RAW_TABLE_NAME {
-  value: "sinclair_debug"
+  value: "debug"
 }
 
 # Don't modify this value unless instructed to do so by your DataZoom or Looker Rep
