@@ -676,14 +676,6 @@
     show_sql_query_menu_options: false
     show_totals: true
     show_row_totals: true
-    series_cell_visualizations:
-      sinclair_debug.count:
-        is_active: false
-        palette:
-          palette_id: 4a543302-b64d-409c-9863-679b5b230aac
-          collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-    series_text_format:
-      sinclair_debug.count: {}
     conditional_formatting: [{type: greater than, value: 0, background_color: "#72D16D",
         font_color: !!null '', color_application: {collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7,
           palette_id: 85de97da-2ded-4dec-9dbd-e6a7d36d5825}, bold: false, italic: false,
