@@ -412,9 +412,8 @@
     model: datazoomv3
     explore: datazoom_raw
     type: looker_line
-    fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.site_domain,
+    fields: [datazoom_raw.median_TTFF_startup_duration_total,
       datazoom_raw.timestamp_hour]
-    pivots: [datazoom_raw.site_domain]
     filters:
       datazoom_raw.median_TTFF_startup_duration_total: ">=5000"
       datazoom_raw.timestamp_date: 24 hours

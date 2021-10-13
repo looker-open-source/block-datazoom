@@ -103,7 +103,6 @@
     fill_fields: [datazoom_raw.timestamp_date]
     filters:
       datazoom_raw.timestamp_date: 7 days ago for 7 days
-      datazoom_raw.site_domain: ''
     sorts: [datazoom_raw.timestamp_date desc]
     limit: 500
     query_timezone: America/New_York

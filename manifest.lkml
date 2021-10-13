@@ -13,7 +13,7 @@ constant: BIGQUERY_PROJECT_NAME {
 }
 
 constant: BIGQUERY_DATASET_NAME {
-  value: "jwplayerdataset"
+  value: "dev_sandbox"
 }
 
 constant: DATAZOOM_RAW_TABLE_NAME {

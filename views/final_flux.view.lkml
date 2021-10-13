@@ -5,7 +5,7 @@ view: final_flux {
     persist_for: "1 hour"
     sql:
       SELECT S.event_id, S.content_session_id, timestamp, event_type, buffer_duration_content_ms, playback_duration_content_ms, stall_duration_content_ms,
-      media_type, app_session_id, site_domain, error_msg, title, page_url, isp, browser_name, country, os_name, device_type
+      media_type, app_session_id, error_msg, title, isp, browser_name, country, os_name, device_type
       from ${datazoom_raw.SQL_TABLE_NAME} T
       join (SELECT
           content_session_id,
@@ -65,10 +65,6 @@ view: final_flux {
     sql: ${TABLE}.title ;;
   }
 
-  dimension: page_url {
-    type: string
-    sql: ${TABLE}.page_url ;;
-  }
 
   dimension: error_msg {
     type: string
@@ -115,18 +111,13 @@ view: final_flux {
     sql: ${TABLE}.stall_duration_content_ms ;;
   }
 
-  dimension: site_domain {
-    type: string
-    sql: ${TABLE}.site_domain ;;
-  }
-
   measure: Views_with_error{
     type: count_distinct
     sql: ${content_session_id} ;;
     filters: [
       event_type: "error",
       media_type: "content"]
-    drill_fields: [site_domain, title, page_url, Content_Views]
+    drill_fields: [title, Content_Views]
   }
 
   measure: start_views_with_error{
@@ -136,7 +127,7 @@ view: final_flux {
       event_type: "error",
       media_type: "content",
       playback_duration_content_ms: "=0"]
-    drill_fields: [site_domain, title, page_url, Content_Views]
+    drill_fields: [title, Content_Views]
   }
 
   measure: mid_views_with_error{
@@ -146,7 +137,7 @@ view: final_flux {
       event_type: "error",
       media_type: "content",
       playback_duration_content_ms: ">0"]
-    drill_fields: [site_domain, title, page_url, Content_Views]
+    drill_fields: [title, Content_Views]
   }
 
   measure: Fatal_video_Error_Rate{

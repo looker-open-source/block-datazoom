@@ -400,10 +400,6 @@ view: datazoom_raw {
     sql: ${TABLE}.page_title ;;
   }
 
-  dimension: page_url {
-    type: string
-    sql: ${TABLE}.page_url ;;
-  }
 
   dimension: playback_duration_ads_ms {
     type: number
@@ -523,11 +519,6 @@ view: datazoom_raw {
   dimension: server_ts_offset_ms {
     type: number
     sql: ${TABLE}.server_ts_offset_ms ;;
-  }
-
-  dimension: site_domain {
-    type: string
-    sql: ${TABLE}.site_domain ;;
   }
 
   dimension: skip_time_offset_sec {
