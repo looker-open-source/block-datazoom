@@ -13,11 +13,11 @@ constant: BIGQUERY_PROJECT_NAME {
 }
 
 constant: BIGQUERY_DATASET_NAME {
-  value: "dev_sandbox"
+  value: "datazoom_demo"
 }
 
 constant: DATAZOOM_RAW_TABLE_NAME {
-  value: "debug"
+  value: "datazoom_video_telemetry_demo_data"
 }
 
 # Don't modify this value unless instructed to do so by your DataZoom or Looker Rep

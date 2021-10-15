@@ -407,17 +407,14 @@
     col: 8
     width: 8
     height: 6
-  - title: Hourly Time to first frame over 5 seconds
-    name: Hourly Time to first frame over 5 seconds
+  - title: Hourly Time to first frame
+    name: Hourly Time to first frame
     model: datazoomv3
     explore: datazoom_raw
     type: looker_line
-    fields: [datazoom_raw.median_TTFF_startup_duration_total,
-      datazoom_raw.timestamp_hour]
+    fields: [datazoom_raw.median_TTFF_startup_duration_total, datazoom_raw.timestamp_hour]
     filters:
-      datazoom_raw.median_TTFF_startup_duration_total: ">=5000"
       datazoom_raw.timestamp_date: 24 hours
-      datazoom_raw.Unique_Devices: ">=100"
     sorts: [datazoom_raw.median_TTFF_startup_duration_total desc 0, datazoom_raw.site_domain]
     limit: 500
     query_timezone: America/New_York
@@ -903,6 +900,7 @@
     defaults_version: 1
     hidden_fields:
     series_types: {}
+    listen: {}
     row: 26
     col: 16
     width: 8
@@ -978,6 +976,7 @@
     rows_font_size: 12
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    listen: {}
     row: 24
     col: 0
     width: 16
@@ -1033,6 +1032,7 @@
     defaults_version: 1
     hidden_fields:
     series_types: {}
+    listen: {}
     row: 32
     col: 16
     width: 8
