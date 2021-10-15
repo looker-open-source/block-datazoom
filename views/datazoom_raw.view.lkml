@@ -69,11 +69,6 @@ view: datazoom_raw {
     sql: ${TABLE}.app_session_id ;;
   }
 
-  dimension: app_session_start_ts_ms {
-    type: number
-    sql: ${TABLE}.app_session_start_ts_ms ;;
-  }
-
   dimension: asn {
     type: string
     sql: ${TABLE}.asn ;;
@@ -82,11 +77,6 @@ view: datazoom_raw {
   dimension: asn_org {
     type: string
     sql: ${TABLE}.asn_org ;;
-  }
-
-  dimension: asset_id {
-    type: string
-    sql: ${TABLE}.asset_id ;;
   }
 
   dimension: autostart {
@@ -172,11 +162,6 @@ view: datazoom_raw {
   dimension: content_session_id {
     type: string
     sql: ${TABLE}.content_session_id ;;
-  }
-
-  dimension: content_session_start_ts_ms {
-    type: number
-    sql: ${TABLE}.content_session_start_ts_ms ;;
   }
 
   dimension: controls {
@@ -288,11 +273,6 @@ view: datazoom_raw {
   dimension: fullscreen {
     type: yesno
     sql: ${TABLE}.fullscreen ;;
-  }
-
-  dimension: google_analytics_client_id {
-    type: string
-    sql: ${TABLE}.googleAnalyticsClientId ;;
   }
 
   dimension: in_sample {
@@ -697,11 +677,6 @@ view: datazoom_raw {
     sql: ${TABLE}.user_agent ;;
   }
 
-  dimension: user_id {
-    type: string
-    sql: ${TABLE}.userID ;;
-  }
-
   dimension: volume_level_percent {
     type: string
     sql: ${TABLE}.volume_level_percent ;;
@@ -731,12 +706,6 @@ view: datazoom_raw {
     sql: ${device_id} ;;
     type: count_distinct
     description: "Unique device IDs"
-  }
-
-  measure: unique_users{
-    sql: ${user_id} ;;
-    type: count_distinct
-    description: "Unique user IDs"
   }
 
   measure: median_TTFF_startup_duration_total {
@@ -779,14 +748,6 @@ view: datazoom_raw {
     label: "Average minutes per session"
     type: number
     sql: (${heartbeats}/${unique_sessions}) ;;
-    value_format: "#.00;(#.00)"
-  }
-
-  measure: minutes_per_user{
-    description: "Average number of minutes viewed per user id"
-    label: "Average minutes per user"
-    type: number
-    sql: (${heartbeats}/${unique_users}) ;;
     value_format: "#.00;(#.00)"
   }
 
