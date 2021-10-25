@@ -1,9 +1,9 @@
 {
-  "label": "CCAI Insights",
+  "label": "Datazoom",
   "category_label": "Models",
   "branding": {
     "image_uri": "https://marketplace-api.looker.com/block-icons/ccai_icon.png",
-    "tagline": "CCAI Insights integrates with the Looker Block to aggregate data outside of contact center sources to provide a more holistic view of the business."
+    "tagline": "Datazoom’s video streaming product performance block for OTT provides dashboards to visualize audience growth and engagement, Ad metrics, video QOE, content performance and marketing."
   },
 
   "constants": {
@@ -11,16 +11,22 @@
       "label": "Connection Name",
        "value_constraint": "connection"
     },
-    "INSIGHTS_TABLE": {
-      "label": "Insights Table",
+    "BIGQUERY_PROJECT_NAME": {
+      "label": "BigQuery Prject Name",
     },
-    "UNNEST_TABLE": {
-      "label": "Unnest Table",
+    "BIGQUERY_DATASET_NAME": {
+      "label": "BigQuery Dataset Name",
+    },
+    "DATAZOOM_RAW_TABLE_NAME": {
+      "label": "Datazoom Raw Table Name",
+    },
+    "LOOKER_MODEL_NAME": {
+      "label": "Looker Model Name",
     }
   },
   "models": [
     {
-      "name": "insights_demo",
+      "name": "datazoomv3",
       "connection_constant": "CONNECTION_NAME"
     }
   ]
