@@ -12,13 +12,13 @@
        "value_constraint": "connection"
     },
     "BIGQUERY_PROJECT_NAME": {
-      "label": "BigQuery Prject Name",
+      "label": "BigQuery Prject Name"
     },
     "BIGQUERY_DATASET_NAME": {
-      "label": "BigQuery Dataset Name",
+      "label": "BigQuery Dataset Name"
     },
     "DATAZOOM_RAW_TABLE_NAME": {
-      "label": "Datazoom Raw Table Name",
+      "label": "Datazoom Raw Table Name"
     },
     "LOOKER_MODEL_NAME": {
       "label": "Looker Model Name"
