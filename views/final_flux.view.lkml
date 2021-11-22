@@ -5,7 +5,7 @@ view: final_flux {
     persist_for: "1 hour"
     sql:
       SELECT S.event_id, S.content_session_id, timestamp, event_type, buffer_duration_content_ms, playback_duration_content_ms, stall_duration_content_ms,
-      media_type, app_session_id, error_msg, title, isp, browser_name, country, os_name, device_type
+      media_type, app_session_id, error_msg, title, isp, browser_name, country, os_name, device_type, num_ad_plays
       from ${datazoom_raw.SQL_TABLE_NAME} T
       join (SELECT
           content_session_id,
@@ -37,6 +37,11 @@ view: final_flux {
   dimension: isp {
     type: string
     sql: ${TABLE}.isp ;;
+  }
+
+  dimension: num_ad_plays {
+    type: number
+    sql: ${TABLE}.num_ad_plays ;;
   }
 
   dimension: device_type {
@@ -208,4 +213,21 @@ view: final_flux {
     percentile: 50
     value_format: "#.00;(#.00)"
   }
+
+  measure: exits_before_content_and_ad_play{
+    type: count_distinct
+    sql: ${content_session_id} ;;
+    filters: [
+      playback_duration_content_ms: "=0",
+      num_ad_plays: "=0",
+      event_type: "-playback_start"]
+  }
+
+  measure: EBVS{
+    description: "Percentage of sessions that end before content or ad has started playing"
+    type: number
+    value_format_name: percent_2
+    sql: (${exits_before_content_and_ad_play}/NULLIF(${Content_Views}, 0)) ;;
+    drill_fields: [title, Content_Views]
+    }
 }
