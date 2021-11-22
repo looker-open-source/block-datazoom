@@ -1,0 +1,33 @@
+{
+  "label": "OTT Analytics by Datazoom",
+  "category_label": "Models",
+  "branding": {
+    "image_uri": "https://marketplace-api.looker.com/block-icons/datazoom.jpg",
+    "tagline": "Datazoom’s video streaming product performance block for OTT provides dashboards to visualize audience growth and engagement, Ad metrics, video QOE, content performance and marketing."
+  },
+
+  "constants": {
+    "CONNECTION_NAME": {
+      "label": "Connection Name",
+       "value_constraint": "connection"
+    },
+    "BIGQUERY_PROJECT_NAME": {
+      "label": "BigQuery Prject Name"
+    },
+    "BIGQUERY_DATASET_NAME": {
+      "label": "BigQuery Dataset Name"
+    },
+    "DATAZOOM_RAW_TABLE_NAME": {
+      "label": "Datazoom Raw Table Name"
+    },
+    "LOOKER_MODEL_NAME": {
+      "label": "Looker Model Name"
+    }
+  },
+  "models": [
+    {
+      "name": "datazoomv3",
+      "connection_constant": "CONNECTION_NAME"
+    }
+  ]
+}
