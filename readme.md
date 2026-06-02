@@ -1,4 +1,7 @@
 # Readme
+
+This is not an officially supported Google product. This project is not eligible for the [Google Open Source Software Vulnerability Rewards Program](https://bughunters.google.com/open-source-security).
+
 ##### All dashbaords require base Datazoom raw player table
 
 ## High level KPI Dashboard
@@ -8,8 +11,6 @@
 This dashboard only shows general platform performance, including growth, engagement, and revenue indicators.
 
 Click on any of the top line measures to dive into the relevant granular dashboards.
-
-
 
 ## Audience Growth and Engagement Dashboard
 #### This dashboard is to be used by product and marketing teams.
@@ -31,7 +32,6 @@ Click on any pie chart or map to filter the entire dashboard by that user cohort
 1. Engaged users are the most valuable, we want the ratio of Engaged users to increase. A good goal is 50%
 2. Stickiness is another indicator of engagement level, a good goal is 20%
 3. Try various filters to see which countries and device types could use additional marketing, and what time is preferable to drive growth, or existing users back to the platform.
-
 
 ## Ad performance Dashboard
 #### Used by ad ops and sales teams
@@ -64,7 +64,6 @@ This dashboard focuses on ad errors and the financial implications. It can be us
 
 Filter the metrics by clicking on the ad error code or by selecting content from the list.
 
-
 ## Content Performance Dashboard
 #### Used by content producers and curators
 ##### Requires base Datazoom raw player table only
@@ -81,7 +80,6 @@ For a specific content title, we can:
 * See on the map, how many minutes on average are being consumed. Use this to target curation to the regions most appropriate.
 * Time and date the content was most frequently viewed. Use this to time content release and marketing.
 
-
 ## Content Marketing Dashboard
 #### Used by content curators and internal marketing teams
 ##### Requires `affinity` derived table
@@ -92,7 +90,6 @@ We can see what content users are inclined to watch by clicking on a "Content A"
 * Notifications can be sent out to users that have watched the seed content in the past, but have not watched the recommended content.
 * Recommended content rows can be displayed in the platform, bespoke to the user's viewing history.
 * Related content can be displayed on a content title screen or auto play after a stream has finished.
-
 
 ## QoE Dashboard
 #### Used by Video Engineering and Incident Management
@@ -108,7 +105,6 @@ Click on the bell icon on any of the time series charts to get alerts sent to sl
 * EBVS should stay below 10%
 * Buffer Recovery rate should be above 90%
 
-
 **Issue Investigation**
 
 1. Are there any abnormalities in the time series charts? Look for spikes and flat lines.
@@ -121,7 +117,6 @@ Click on the bell icon on any of the time series charts to get alerts sent to sl
 EBVS - Exit before video start. Users may not be able to playback video and also don't generate an error. EBVS will increase in under these circumstances. <br>
 Buffer Recovery Rate - The percentage of buffer starts that have a resulting buffer end. Those buffers that do not have an end, either got stuck or the user did not tolerate the buffer duration.<br>
 TTFF - Time to first frame. How long it takes to start video playback. Ideally the video should be quick to start, but the delay in starting can be tolerated more depending on the user's circumstances.
-
 
 ## Data Supervision Dashboard
 #### Used by Data Engineers
